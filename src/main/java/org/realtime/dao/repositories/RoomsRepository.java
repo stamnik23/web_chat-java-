@@ -9,7 +9,7 @@ import org.realtime.dao.models.Rooms;
 
 public interface RoomsRepository extends JpaRepository<Rooms, Long> {
 
-    Rooms findByroomName(String roomName);
+  //  Rooms findByroomName(String roomName);
 
     Rooms findByExternalId(UUID id);
 

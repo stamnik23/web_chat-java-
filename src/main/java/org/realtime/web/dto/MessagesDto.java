@@ -5,35 +5,39 @@
  */
 package org.realtime.web.dto;
 
+import java.io.BufferedReader;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.UUID;
 import org.realtime.dao.models.Messages;
+
 
 /**
  *
  * @author nstamou
  */
 public class MessagesDto {
-    private UUID externalId;
-    private Long id;
+    
+    private UUID userId;
+    private UUID messageId;
     private Timestamp time;
-    private boolean read;
+    private boolean seen;
     private String content;
     
-    public UUID getExternalId() {
-        return externalId;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setExternalId(UUID externalId) {
-        this.externalId = externalId;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
-    public Long getId() {
-        return id;
+    public UUID getMessageId() {
+        return messageId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMessageId(UUID messageId) {
+        this.messageId = messageId;
     }
 
     public Timestamp getTime() {
@@ -44,12 +48,12 @@ public class MessagesDto {
         this.time = time;
     }
 
-    public boolean getisRead() {
-        return read;
+    public boolean getisSeen() {
+        return seen;
     }
 
-    public void setRead(boolean read) {
-        this.read = read;
+    public void setSeen(boolean seen) {
+        this.seen = seen;
     }
 
     public String getContent() {
@@ -60,19 +64,20 @@ public class MessagesDto {
         this.content = content;
     }
     
-    public MessagesDto (UUID externalId,Long Id,Timestamp time, boolean read, String Content){
-        this.externalId=externalId;
-        this.id=Id;
-        this.read=read;
+    public MessagesDto (UUID userId,UUID messageId,Timestamp time, boolean seen, String Content){
+        this.userId=userId;
+        this.messageId=messageId;
+        this.seen=seen;
         this.content=Content;
+        this.time=time;
        
     }
    public MessagesDto fromEntity(Messages messages) {      
-       setExternalId(messages.getExternalId());
-       setId(messages.getId());
+       setMessageId(messages.getMessageId());
+       setUserId(messages.getUserId());
        setTime(messages.getTime());
        setContent(messages.getContent());
-       setRead(messages.isRead());
+       setSeen(messages.isSeen());
        return this;
    }   
    
@@ -84,10 +89,10 @@ public class MessagesDto {
    
    
     public Messages toEntity(Messages messages){
-        messages.setId(id);
-        messages.setExternalId(externalId);
+        messages.setUserId(userId);
+        messages.setMessageId(messageId);
         messages.setTime(time);
-        messages.setRead(read);
+        messages.setSeen(seen);
         messages.setContent(content);
 
         

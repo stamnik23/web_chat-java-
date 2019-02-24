@@ -6,77 +6,54 @@
 package org.realtime.dao.models;
 
 
+import java.io.BufferedReader;
 import org.hibernate.annotations.Type;
-
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
-import javax.xml.soap.Text;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.sql.Types;
+
 import java.util.Set;
 import java.util.UUID;
 
+
 @Entity
-@Table(name = "Rooms")
+@Getter
+@Setter
+@Table(name = "Messages")
+
+
 
 public class Messages implements Serializable {
+ 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Type(type = "uuid-char")
-    private UUID externalId;
-
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID messageId;
+    
+    
+    private UUID userId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user")
+    private User user;
+    
+    
+    
     private Timestamp time;
-    private boolean read;
+    private boolean seen;
+    
+    private UUID roomId;
+    
+    
+    
+   @Type(type = "text")
     private String content;
 
-
-
-    public void setExternalId(UUID externalId) {
-        this.externalId = externalId;
+        public Messages() {
+        this.messageId = UUID.randomUUID();
     }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public UUID getExternalId() {
-        return externalId;
-    }
-
-
-
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
-    }
-
-    public boolean isRead() {
-        return read;
-    }
-
-    public void setRead(boolean read) {
-        this.read = read;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Messages(){
-        this.externalId = UUID.randomUUID();
-    }
-
-
+    
 }

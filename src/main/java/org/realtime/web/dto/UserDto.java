@@ -11,15 +11,20 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.UUID;
+import lombok.Getter;
+import lombok.Setter;
 /**
  *
  * @author nstamou
  */
+
+@Getter
+@Setter
 public class UserDto implements Serializable {
     
-    private UUID externalId;
-    
-    private Long id;
+    private UUID roomId;
+    private UUID messageId;
+    private UUID userId;
     private String username;
     private String password;
     private String firstName;
@@ -28,10 +33,12 @@ public class UserDto implements Serializable {
     private Boolean isAdmin;
     private String registrationDate;
 
+    public UserDto() {
+    }
 
-public UserDto(UUID externalId,Long Id, String username, String password, String firstName, String lastName, String email, Boolean isAdmin, String registrationDate) {
-        this.externalId = externalId;
-        this.id = Id;
+public UserDto(UUID userId, UUID roomId, UUID messageId, String username, String password, String firstName, String lastName, String email, Boolean isAdmin, String registrationDate) {
+        this.userId = userId;
+        this.roomId = roomId;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -42,110 +49,40 @@ public UserDto(UUID externalId,Long Id, String username, String password, String
 }
 
 
-public UserDto fromEntity(User users) {
+public UserDto fromEntity(User user) {
 
-        setExternalId(users.getExternalId());
-        setId(users.getId());
-        setUsername(users.getUsername());
-        setEmail(users.getEmail());
-        setPassword(users.getPassword());
-        setFirstName(users.getFirstName());
-        setLastName(users.getLastName());
-        setIsAdmin(users.getAdmin());
-        setRegistrationDate(users.getRegistrationDate());
+        setUserId(user.getUserId());
+        setRoomId(user.getRoomId());
+        setMessageId(user.getMessageId());
+        setUsername(user.getUsername());
+        setEmail(user.getEmail());
+        setPassword(user.getPassword());
+        setFirstName(user.getFirstName());
+        setLastName(user.getLastName());
+        setIsAdmin(user.getIsAdmin());
+        setRegistrationDate(user.getRegistrationDate());
    
         return this;
     }
 
     public User toEntity() {
-        User users = new User();
+        User user = new User();
 
-        return this.toEntity(users);
+        return this.toEntity(user);
     }
 
-    public User toEntity(User users){
-        users.setId(id);
-        users.setExternalId(externalId);
-        users.setFirstName(firstName);
-        users.setLastName(lastName);
-        users.setUsername(username);
-        users.setRegistrationDate(registrationDate);
-        users.setAdmin(isAdmin);
-        users.setPassword(password);
+    public User toEntity(User user){
+        user.setRoomId(roomId);
+        user.setMessageId(messageId);
+        user.setUserId(userId);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setUsername(username);
+        user.setRegistrationDate(registrationDate);
+        user.setIsAdmin(isAdmin);
+        user.setPassword(password);
         
-       return users;
+       return user;
     }
-    public UUID getExternalId() {
-        return externalId;
-    }
-
-    public void setExternalId(UUID externalId) {
-        this.externalId = externalId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Boolean getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
-
-    public String getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    
+  
 }

@@ -5,22 +5,30 @@
  */
 package org.realtime.web.dto;
 
+import java.io.Serializable;
 import java.util.UUID;
+import lombok.Getter;
+import lombok.Setter;
 import org.realtime.dao.models.Rooms;
 
 /**
  *
  * @author nstamou
  */
-public class RoomsDto {
-    private UUID externalId;
-    private Long id;
+@Getter
+@Setter
+public class RoomsDto implements Serializable {  
+    
+    private UUID roomId;
+    private UUID userId;
+    private UUID messageId;
     private String roomName;
     private int roomCapacity;
     
-    public RoomsDto(UUID externalId,Long Id, String roomName, int roomCapacity) {
-        this.externalId = externalId;
-        this.id = Id;
+    public RoomsDto(UUID roomId,UUID userId, UUID messageId,String roomName, int roomCapacity) {
+        this.roomId = roomId;
+        this.userId = userId;
+        this.messageId = messageId;
         this.roomName = roomName;
         this.roomCapacity = roomCapacity;
 
@@ -29,10 +37,12 @@ public class RoomsDto {
     
     public RoomsDto fromEntity(Rooms rooms) {
 
-        setExternalId(rooms.getExternalId());
-        setId(rooms.getId());
+        setRoomId(rooms.getRoomId());
+        setUserId(rooms.getUserId());
+        setMessageId(rooms.getMessageId());
         setRoomName(rooms.getRoomName());
         setRoomCapacity(rooms.getRoomCapacity());
+        
         return this;
     }
     
@@ -44,8 +54,9 @@ public class RoomsDto {
      
      
      public Rooms toEntity(Rooms rooms){
-        rooms.setId(id);
-        rooms.setExternalId(externalId);
+        rooms.setUserId(userId);
+        rooms.setRoomId(roomId);
+        rooms.setMessageId(messageId);
         rooms.setRoomName(roomName);
         rooms.setRoomCapacity(roomCapacity);
 
@@ -54,20 +65,27 @@ public class RoomsDto {
     }
     
     
-    public UUID getExternalId() {
-        return externalId;
+    public UUID getRoomId() {
+        return roomId;
     }
 
-    public void setExternalId(UUID externalId) {
-        this.externalId = externalId;
+    public void setRoomId(UUID roomId) {
+        this.roomId = roomId;
+    }
+    
+    public UUID getMessageId() {
+        return messageId;
     }
 
-    public Long getId() {
-        return id;
+    public void setMessageId(UUID messageId) {
+        this.messageId = messageId;
+    }
+    public UUID getId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(UUID userId) {
+        this.userId = userId;
     }
 
     public String getRoomName() {

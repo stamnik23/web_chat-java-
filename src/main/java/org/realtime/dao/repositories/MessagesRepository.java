@@ -18,7 +18,7 @@ import org.realtime.dao.models.Messages;
 
 public interface MessagesRepository extends JpaRepository<Messages, Long> {
 
-    Messages findbytime (Timestamp time);
+    //Messages findbytime (Timestamp time);
 
     Messages findByExternalId(UUID id);
 

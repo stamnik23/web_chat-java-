@@ -6,28 +6,30 @@
 package org.realtime;
 
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.Map;
 //import javax.ejb.Stateless;
 //import javax.persistence.EntityManager;
 //import javax.persistence.PersistenceContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+//import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+//import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class
-})
+@SpringBootApplication
+        //(exclude = { DataSourceAutoConfiguration.class,
+        //HibernateJpaAutoConfiguration.class
+//})
 
 public class RealTimeWebChat {
 
     public static void main(String[] args) {
-        SpringApplication app =  new SpringApplication(RealTimeWebChat.class);
-        Map<String,Object> map = new HashMap<>();
+    SpringApplication.run(RealTimeWebChat.class, args);
+
+      /*  SpringApplication app =  new SpringApplication(RealTimeWebChat.class);
+        Map<String,Object> map = new HashMap<>();d
         map.put("server.port",8080);
         app.setDefaultProperties(map);
-        app.run(args);
+        app.run(args); */
     }
     
 
