@@ -36,7 +36,7 @@ public class Messages implements Serializable {
     
     
     private UUID userId;
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user")
     private User user;
     
