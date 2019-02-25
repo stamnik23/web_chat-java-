@@ -29,8 +29,8 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "User")
     private Set<Messages> messages;
     
-      @OneToMany(fetch = FetchType.EAGER,mappedBy = "User")
-    private Set<Rooms> rooms;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="User")
+    private Set<RoomUserTracker> RoomUserTracker;
     
 
     private String username;

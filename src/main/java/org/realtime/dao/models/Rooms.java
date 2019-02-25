@@ -11,30 +11,24 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "Messages")
+@Table(name = "Rooms")
 
 
 
 public class Rooms implements Serializable {
-    @Id
-    private UUID messageId;
-
-    
-    @Id
-    private UUID userId;
+ 
     
     @Type(type = "uuid-char")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID roomId;
  
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "Rooms")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "Rooms")
     private Set<Messages> Messages;
-    
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "User")
-    private User user;
-   
+     
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="Rooms")
+    private Set<RoomUserTracker> RoomUserTracker;
+	
     private String roomName;
 
     private int roomCapacity;
