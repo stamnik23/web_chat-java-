@@ -27,7 +27,7 @@ public class Countries implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID countryId;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "Rooms")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "Countries")
     private Set<Rooms> Rooms;
      
     private String countryName;
