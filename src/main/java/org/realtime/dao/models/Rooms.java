@@ -22,12 +22,16 @@ public class Rooms implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID roomId;
  
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "Rooms")
     private Set<Messages> Messages;
      
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="Rooms")
     private Set<RoomUserTracker> RoomUserTracker;
+	
+	private UUID countryId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "countryid")
+    private Countries countries;
 	
     private String roomName;
 

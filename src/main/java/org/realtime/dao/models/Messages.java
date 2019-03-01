@@ -40,12 +40,16 @@ public class Messages implements Serializable {
     @JoinColumn(name = "user")
     private User user;
     
-    
+    private UUID roomId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roomid")
+    private Rooms rooms;
+	
+	
     
     private Timestamp time;
     private boolean seen;
     
-    private UUID roomId;
     
     
     
