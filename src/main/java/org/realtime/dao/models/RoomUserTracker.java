@@ -28,14 +28,17 @@ import java.util.UUID;
 
 public class RoomUserTracker implements Serializable {
 	
-	@Type(type = "uuid-char")
+	
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private UUID externalId;
+    private Long id;
 	
     @ManyToOne(fetch=FetchType.EAGER)
     private Rooms Rooms;
-    
+
+    @Type(type = "uuid-char")
+    private UUID externalId;
+
 	@ManyToOne(fetch=FetchType.EAGER)
     private User User;
 	
