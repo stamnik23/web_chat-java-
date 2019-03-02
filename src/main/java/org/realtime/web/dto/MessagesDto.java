@@ -18,26 +18,23 @@ import org.realtime.dao.models.Messages;
  */
 public class MessagesDto {
     
-    private UUID userId;
-    private UUID messageId;
-    private Timestamp time;
-    private boolean seen;
-    private String content;
-    
-    public UUID getUserId() {
-        return userId;
+    private long id;
+    private UUID externalId;
+
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public UUID getMessageId() {
-        return messageId;
+    public UUID getExternalId() {
+        return externalId;
     }
 
-    public void setMessageId(UUID messageId) {
-        this.messageId = messageId;
+    public void setExternalId(UUID externalId) {
+        this.externalId = externalId;
     }
 
     public Timestamp getTime() {
@@ -48,7 +45,7 @@ public class MessagesDto {
         this.time = time;
     }
 
-    public boolean getisSeen() {
+    public boolean isSeen() {
         return seen;
     }
 
@@ -63,18 +60,24 @@ public class MessagesDto {
     public void setContent(String content) {
         this.content = content;
     }
+
+    private Timestamp time;
+    private boolean seen;
+    private String content;
     
-    public MessagesDto (UUID userId,UUID messageId,Timestamp time, boolean seen, String Content){
-        this.userId=userId;
-        this.messageId=messageId;
+
+    
+    public MessagesDto (Long id,UUID externalId,Timestamp time, boolean seen, String Content){
+        this.id=id;
+        this.externalId=externalId;
         this.seen=seen;
         this.content=Content;
         this.time=time;
        
     }
    public MessagesDto fromEntity(Messages messages) {      
-       setMessageId(messages.getMessageId());
-       setUserId(messages.getUserId());
+       setId(messages.getId());
+       setExternalId(messages.getExternalId());
        setTime(messages.getTime());
        setContent(messages.getContent());
        setSeen(messages.isSeen());
@@ -89,8 +92,8 @@ public class MessagesDto {
    
    
     public Messages toEntity(Messages messages){
-        messages.setUserId(userId);
-        messages.setMessageId(messageId);
+        messages.setId(id);
+        messages.setExternalId(externalId);
         messages.setTime(time);
         messages.setSeen(seen);
         messages.setContent(content);

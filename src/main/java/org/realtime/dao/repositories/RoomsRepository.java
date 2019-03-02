@@ -11,6 +11,6 @@ public interface RoomsRepository extends JpaRepository<Rooms, Long> {
 
   //  Rooms findByroomName(String roomName);
 
-    Rooms findByExternalId(UUID id);
+    Rooms findByExternalId (UUID externalId);
 
 }

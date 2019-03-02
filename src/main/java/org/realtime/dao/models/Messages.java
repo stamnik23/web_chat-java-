@@ -16,6 +16,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.sql.Types;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -28,36 +29,27 @@ import java.util.UUID;
 
 
 public class Messages implements Serializable {
- 
     @Id
-    @Type(type = "uuid-char")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID messageId;
-    
-    
-    private UUID userId;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user")
-    private User user;
-    
-    private UUID roomId;
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "roomid")
-    private Rooms rooms;
-	
-	
-    
+    private Long id;
+
     private Timestamp time;
     private boolean seen;
-    
-    
-    
-    
-   @Type(type = "text")
+
+    @Type(type = "uuid-char")
+    private UUID externalId;
+
+    @Type(type = "text")
     private String content;
 
-        public Messages() {
-        this.messageId = UUID.randomUUID();
+  //  @OneToMany(mappedBy = "messages")
+  //   private List<Rooms> rooms;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Rooms rooms;
+
+    public Messages(){
+        this.externalId = UUID.randomUUID();
     }
-    
+
 }

@@ -18,20 +18,15 @@ import java.util.UUID;
 @Setter
 @Table(name = "User")
 public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    @Id@GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long userId;
 
     @Type(type = "uuid-char")
-    private UUID userId;
+    private UUID externalId;
 
-  
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "User")
-    private Set<Messages> messages;
-    
-    @OneToMany(fetch = FetchType.EAGER, mappedBy="User")
-    private Set<RoomUserTracker> RoomUserTracker;
-    
+
+    //@OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    //private Set<Messages> messages;
 
     private String username;
     private String password;
@@ -40,14 +35,15 @@ public class User implements Serializable {
     private String email;
     private Boolean isAdmin;
     private String registrationDate;
-    private UUID messageId;
-    private UUID roomId;
-    
-      
-    public User() {
-        this.userId = UUID.randomUUID();
+
+
+
+    public User(){
+        this.externalId = UUID.randomUUID();
+        this.isAdmin = false;
     }
 
-       // @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-     //   Set<Messages> messages;
 }
+
+
+

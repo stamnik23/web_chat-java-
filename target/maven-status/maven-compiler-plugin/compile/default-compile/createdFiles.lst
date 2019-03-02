@@ -1,7 +1,9 @@
 org\realtime\web\ExceptionHandlers\BadRequestException.class
 org\realtime\web\dto\RoomsDto.class
+org\realtime\dao\models\Countries.class
 org\realtime\dao\repositories\UserRepository.class
 org\realtime\RealTimeWebChat.class
+org\realtime\dao\models\RoomUserTracker.class
 org\realtime\web\controllers\RoomController.class
 org\realtime\web\dto\MessagesDto.class
 org\realtime\service\UsersService.class

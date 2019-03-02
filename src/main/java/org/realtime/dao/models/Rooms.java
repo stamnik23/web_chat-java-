@@ -16,29 +16,28 @@ import java.util.UUID;
 
 
 public class Rooms implements Serializable {
- 
-    
-    @Type(type = "uuid-char")
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID roomId;
- 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "Rooms")
-    private Set<Messages> Messages;
-     
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="Rooms")
-    private Set<RoomUserTracker> RoomUserTracker;
-	
-	private UUID countryId;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "countryid")
-    private Countries countries;
-	
+    private Long id;
+
+    @Type(type = "uuid-char")
+    private UUID externalId;
+
     private String roomName;
 
     private int roomCapacity;
-    
+
     private String roomDescription;
-    
-    
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "rooms")
+    Set<Messages> messages;
+
+    @OneToOne(fetch=FetchType.EAGER)
+    private Countries countries;
+
+    public Rooms() {
+        this.externalId = UUID.randomUUID();
+    }
 
 }

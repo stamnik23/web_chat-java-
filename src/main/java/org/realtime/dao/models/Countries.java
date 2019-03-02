@@ -8,6 +8,8 @@ package org.realtime.dao.models;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.realtime.dao.Enums.CountriesList;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -25,13 +27,19 @@ public class Countries implements Serializable {
     
     @Type(type = "uuid-char")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID countryId;
+    @Id
+    private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "Countries")
-    private Set<Rooms> Rooms;
+    @Type(type = "uuid-char")
+    private UUID externalId;
+
+    @Enumerated(EnumType.STRING)
+    private CountriesList countryName;
+
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "countries")
+    private Rooms Rooms;
      
-    private String countryName;
-     
+
    
 
     

@@ -21,10 +21,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDto implements Serializable {
-    
-    private UUID roomId;
-    private UUID messageId;
-    private UUID userId;
+
+    private Long userId;
+    private UUID externalId;
+
     private String username;
     private String password;
     private String firstName;
@@ -36,9 +36,9 @@ public class UserDto implements Serializable {
     public UserDto() {
     }
 
-public UserDto(UUID userId, UUID roomId, UUID messageId, String username, String password, String firstName, String lastName, String email, Boolean isAdmin, String registrationDate) {
+public UserDto(Long userId, UUID externalId, String username, String password, String firstName, String lastName, String email, Boolean isAdmin, String registrationDate) {
         this.userId = userId;
-        this.roomId = roomId;
+        this.externalId = externalId;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -51,9 +51,8 @@ public UserDto(UUID userId, UUID roomId, UUID messageId, String username, String
 
 public UserDto fromEntity(User user) {
 
+        setExternalId(user.getExternalId());
         setUserId(user.getUserId());
-        setRoomId(user.getRoomId());
-        setMessageId(user.getMessageId());
         setUsername(user.getUsername());
         setEmail(user.getEmail());
         setPassword(user.getPassword());
@@ -72,9 +71,9 @@ public UserDto fromEntity(User user) {
     }
 
     public User toEntity(User user){
-        user.setRoomId(roomId);
-        user.setMessageId(messageId);
         user.setUserId(userId);
+        user.setExternalId(externalId);
+
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setUsername(username);

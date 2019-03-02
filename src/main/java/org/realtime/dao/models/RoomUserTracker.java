@@ -30,13 +30,14 @@ public class RoomUserTracker implements Serializable {
 	
 	@Type(type = "uuid-char")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private UUID RoomUserTrackerId;
 	
-    @ManyToOne(fetch=FetchType.EAGE)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="roomid")
     private Rooms Rooms;
     
-	@ManyToOne(fetch=FetchType.EAGE)
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="userid")
     private User User;
 	
