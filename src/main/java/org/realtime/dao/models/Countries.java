@@ -25,7 +25,7 @@ import java.util.UUID;
 public class Countries implements Serializable {
  
     
-    @Type(type = "uuid-char")
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
