@@ -36,8 +36,8 @@ public class Countries implements Serializable {
     @Enumerated(EnumType.STRING)
     private CountriesList countryName;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "countries")
-    private Rooms Rooms;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "countries")
+    Set<Rooms> Rooms;
      
 
    
