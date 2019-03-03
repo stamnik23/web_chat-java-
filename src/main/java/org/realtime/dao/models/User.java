@@ -31,7 +31,7 @@ public class User implements Serializable {
     Set<PrivateChat> privatechat;
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_receiver")
-    Set<PrivateChat> privatechat;
+    Set<PrivateChat> privateChat;
 	
     private String username;
     private String password;
