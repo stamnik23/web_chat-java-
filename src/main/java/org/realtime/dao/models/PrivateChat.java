@@ -35,13 +35,6 @@ public class PrivateChat implements Serializable {
     private User user_receiver;
 	
 
-     @OneToMany(fetch = FetchType.EAGER,mappedBy = "roomUserTracker")
-     Set<RoomUserTracker> roomUserTracker;
-  
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "privatechat")
-    Set<PrivateMessages> privateΜessages;
-
-
     public PrivateChat() {
         this.externalId = UUID.randomUUID();
     }
