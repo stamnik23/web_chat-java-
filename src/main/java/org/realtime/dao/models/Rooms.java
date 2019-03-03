@@ -36,8 +36,8 @@ public class Rooms implements Serializable {
     @OneToOne(fetch=FetchType.EAGER)
     private Countries countries;
 
-  //  @OneToMany(fetch = FetchType.EAGER,mappedBy = "rooms")
-  //  private RoomUserTracker roomUserTracker;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "rooms")
+     private RoomUserTracker roomUserTracker;
 
     public Rooms() {
         this.externalId = UUID.randomUUID();

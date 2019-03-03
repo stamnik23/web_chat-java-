@@ -42,7 +42,7 @@ public class PrivateChat implements Serializable {
     Set<PrivateMessages> privatemessages;
 
 
-    public Rooms() {
+    public PrivateChat() {
         this.externalId = UUID.randomUUID();
     }
 

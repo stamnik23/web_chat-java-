@@ -48,7 +48,7 @@ public class PrivateMessages implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private PrivateChat privatechat;
 
-    public Messages(){
+    public PrivateMessages(){
         this.externalId = UUID.randomUUID();
     }
 

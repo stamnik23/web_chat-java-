@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class RoomUserTracker implements Serializable {
 	
-	
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
