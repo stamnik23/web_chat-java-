@@ -25,8 +25,8 @@ public class PrivateChat implements Serializable {
     private UUID externalId;
 
 
-    //@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "privatechat")
-    //Set<PrivateMessages> privatemessages;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "privatechat")
+    Set<PrivateMessages> privatemessages;
      
 	@ManyToOne(fetch=FetchType.EAGER)
     private User user_initialiazer;
@@ -35,11 +35,11 @@ public class PrivateChat implements Serializable {
     private User user_receiver;
 	
 
-   //  @OneToMany(fetch = FetchType.EAGER,mappedBy = "rooms")
-   //  private RoomUserTracker roomUserTracker;
+     @OneToMany(fetch = FetchType.EAGER,mappedBy = "roomUserTracker")
+     Set<RoomUserTracker> roomUserTracker;
   
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "privatechat")
-    Set<PrivateMessages> privatemessages;
+    Set<PrivateMessages> privateΜessages;
 
 
     public PrivateChat() {

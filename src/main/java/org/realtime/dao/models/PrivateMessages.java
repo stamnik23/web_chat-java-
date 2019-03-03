@@ -42,8 +42,8 @@ public class PrivateMessages implements Serializable {
     @Type(type = "text")
     private String content;
 
-  //  @OneToMany(mappedBy = "messages")
-  //   private List<Rooms> rooms;
+   @OneToMany(mappedBy = "messages")
+   private List<Rooms> rooms;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private PrivateChat privatechat;

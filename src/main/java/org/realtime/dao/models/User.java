@@ -24,8 +24,8 @@ public class User implements Serializable {
     @Type(type = "uuid-char")
     private UUID externalId;
 
-   // @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
-   // private RoomUserTracker roomUserTracker;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+    Set<RoomUserTracker> roomUserTracker;
 
     private String username;
     private String password;

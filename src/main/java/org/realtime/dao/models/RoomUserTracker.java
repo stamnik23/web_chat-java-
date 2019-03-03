@@ -32,16 +32,19 @@ public class RoomUserTracker implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-	
+
+
     @ManyToOne(fetch=FetchType.EAGER)
-    private Rooms Rooms;
+    private Rooms rooms;
 
     @Type(type = "uuid-char")
     private UUID externalId;
 
 	@ManyToOne(fetch=FetchType.EAGER)
-    private User User;
-	
+    private User user;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    private PrivateChat privateChat;
 	
 	private Timestamp entry_time;
 	private Timestamp exit_time;
