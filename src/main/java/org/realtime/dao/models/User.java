@@ -33,6 +33,25 @@ public class User implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_receiver")
     Set<PrivateChat> privateChat;
 	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_requesting")
+    Set<FriendRequestTracker> friendrequesttracker;
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_requested")
+    Set<FriendRequestTracker> friendrequestTracker;
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_blocking")
+    Set<BlockTracker> blocktracker;
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_blocked")
+    Set<BlockTracker> blockTracker;
+	
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_reporting")
+    Set<ReportTracker> reporttracker;
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user_reported")
+    Set<ReportTracker> reporTracker;
+	
     private String username;
     private String password;
     private String firstName;
