@@ -23,8 +23,10 @@ public class Rooms implements Serializable {
 
     @Type(type = "uuid-char")
     private UUID externalId;
-
-    private String roomName;
+	
+	
+	@Enumerated(EnumType.STRING)
+    private RoomsList roomName;
 
     private int roomCapacity;
 
@@ -39,8 +41,5 @@ public class Rooms implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "rooms")
     Set<RoomUserTracker> roomUserTracker;
 
-    public Rooms() {
-        this.externalId = UUID.randomUUID();
-    }
 
 }
