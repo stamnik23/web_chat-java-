@@ -35,6 +35,9 @@ public class Rooms implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "rooms")
     Set<Messages> messages;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "rooms")
+    Set<GroupOfInterest> groupofinterest; 
+
     @ManyToOne(fetch=FetchType.EAGER)
     private Countries countries;
 
