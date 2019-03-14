@@ -63,9 +63,9 @@ import org.realtime.dao.models.Messages;
 	
 	 public CountriesDto fromEntity(Countries countries) {    
 	 
-       setId(messages.getId());
-       setExternalId(messages.getExternalId());
-       setCountryName(messages.getCountryName());
+       setId(countries.getId());
+       setExternalId(countries.getExternalId());
+       setCountryName(countries.getCountryName());
        return this;
    }   
    

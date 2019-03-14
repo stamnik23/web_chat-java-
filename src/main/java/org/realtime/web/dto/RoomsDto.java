@@ -41,7 +41,7 @@ public class RoomsDto implements Serializable {
         return roomName;
     }
 
-    public void setRoomName(String roomName) {
+    public void setRoomName(RoomsList roomName) {
         this.roomName = roomName;
     }
 
@@ -55,10 +55,10 @@ public class RoomsDto implements Serializable {
 
     private Long id;
 
-    private String roomName;
+    private RoomsList roomName;
     private int roomCapacity;
     
-    public RoomsDto(UUID externalId, Long id,String roomName, int roomCapacity) {
+    public RoomsDto(UUID externalId, Long id,RoomsList roomName, int roomCapacity) {
 
         this.externalId = externalId;
         this.id = id;
