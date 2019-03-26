@@ -53,12 +53,12 @@ public class RoomsDto implements Serializable {
         this.roomCapacity = roomCapacity;
     }
 
-    private Long id;
+    private long id;
 
     private RoomsList roomName;
     private int roomCapacity;
     
-    public RoomsDto(UUID externalId, Long id,RoomsList roomName, int roomCapacity) {
+    public RoomsDto(UUID externalId, long id,RoomsList roomName, int roomCapacity) {
 
         this.externalId = externalId;
         this.id = id;
