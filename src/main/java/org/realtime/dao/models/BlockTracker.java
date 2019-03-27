@@ -26,7 +26,7 @@ import java.util.UUID;
 public class BlockTracker implements Serializable {
 	
     @Id@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long friendRequestId;
+    private long friendRequestId;
 
     @Type(type = "uuid-char")
     private UUID externalId;

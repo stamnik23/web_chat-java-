@@ -67,7 +67,7 @@ public class MessagesDto {
     
 
     
-    public MessagesDto (Long id,UUID externalId,Timestamp time, boolean seen, String Content){
+    public MessagesDto (long id,UUID externalId,Timestamp time, boolean seen, String Content){
         this.id=id;
         this.externalId=externalId;
         this.seen=seen;
